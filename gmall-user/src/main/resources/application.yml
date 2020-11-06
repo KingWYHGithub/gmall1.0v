@@ -12,3 +12,7 @@ mybatis:
 #\u7AEF\u53E3
 server:
   port: 8080
+#\u63A7\u53F0\u65E5\u5FD7\u8BBE\u7F6E
+logging:
+  level:
+    root: info

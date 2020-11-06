@@ -2,6 +2,7 @@ package com.net.gmall.user.service;
 
 
 import com.net.gmall.user.bean.UmsMember;
+import com.net.gmall.user.bean.UmsMemberReceiveAddress;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ import java.util.List;
 public interface UserService {
 
     List<UmsMember> getAllUser();
+
+    List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId);
 }

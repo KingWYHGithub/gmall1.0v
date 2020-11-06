@@ -1,9 +1,7 @@
 package com.net.gmall.user.mapper;
 
-import com.net.gmall.user.bean.UmsMember;
+import com.net.gmall.user.bean.UmsMemberReceiveAddress;
 import tk.mybatis.mapper.common.Mapper;
-
-import java.util.List;
 
 /**
  * ///////////////////////////////////////
@@ -20,16 +18,8 @@ import java.util.List;
  * |_____/_/    \_\_/_/    \_\_|  |_____|_| \_|
  *
  * @author :wangyuhong
- * @date : 2020/11/7 - 0:30
+ * @date : 2020/11/7 - 3:55
  */
-
-/**
- * 整合通用mapper
- */
-public interface UserMapper extends Mapper<UmsMember> {
-
-
-    List<UmsMember> selectAllUser();
-
+public interface UmsMemberReceiveAddressMapper extends Mapper<UmsMemberReceiveAddress> {
 
 }

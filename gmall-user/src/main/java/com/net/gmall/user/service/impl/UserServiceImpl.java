@@ -1,10 +1,13 @@
 package com.net.gmall.user.service.impl;
 
 import com.net.gmall.user.bean.UmsMember;
+import com.net.gmall.user.bean.UmsMemberReceiveAddress;
+import com.net.gmall.user.mapper.UmsMemberReceiveAddressMapper;
 import com.net.gmall.user.mapper.UserMapper;
 import com.net.gmall.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -29,12 +32,36 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    UserMapper userMapper;
 
+    @Autowired
+    UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
 
     @Override
     public List<UmsMember> getAllUser() {
-        List<UmsMember> umsMember=userMapper.selectAllUser();
+        //userMapper.selectAllUser();
+        List<UmsMember> umsMember=userMapper.selectAll();
         return umsMember;
     }
+
+    /**
+     * 查询memberAddress
+     * @param memberId
+     * @return
+     */
+    @Override
+    public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
+        Example e=new Example(UmsMemberReceiveAddress.class);
+        e.createCriteria().andEqualTo("memberId",memberId);
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddressList = umsMemberReceiveAddressMapper.selectByExample(e);
+//        UmsMemberReceiveAddress umsMemberReceiveAddress=new UmsMemberReceiveAddress();
+//        umsMemberReceiveAddress.setMemberId(memberId);
+
+//        List<UmsMemberReceiveAddress> umsMemberReceiveAddressList
+//                =umsMemberReceiveAddressMapper.selectByExample(umsMemberReceiveAddress);
+//        List<UmsMemberReceiveAddress> select
+//                = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
+        return umsMemberReceiveAddressList;
+    }
+
 }
